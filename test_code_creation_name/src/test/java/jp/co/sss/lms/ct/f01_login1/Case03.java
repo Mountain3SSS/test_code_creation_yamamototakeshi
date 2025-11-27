@@ -48,7 +48,7 @@ public class Case03 {
 		});
 
 		//現ページがログインページである点確認
-		assertEquals(webDriver.getCurrentUrl(), topPage);
+		assertEquals(topPage, webDriver.getCurrentUrl());
 	}
 
 	@Test
@@ -62,7 +62,7 @@ public class Case03 {
 
 		//上記DBに登録されていないユーザー情報を投入
 		user.sendKeys("StudentAA01");
-		password.sendKeys("StudentAA011");
+		password.sendKeys("3SSSSystems");
 
 		// 上記情報が入力されているログイン画面でエビデンスを取得
 		getEvidence(new Case03() {
@@ -77,7 +77,7 @@ public class Case03 {
 
 		assertEquals(webDriver.getTitle(), "コース詳細 | LMS");
 
-		// エラーメッセージが表示されているログイン画面でエビデンスを取得
+		// コース詳細画面でエビデンスを取得
 		getEvidence(new Case03() {
 		}, "2_ログイン成功");
 	}
