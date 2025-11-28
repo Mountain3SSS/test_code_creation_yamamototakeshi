@@ -60,7 +60,7 @@ public class Case03 {
 		WebElement user = webDriver.findElement(By.id("loginId"));
 		WebElement password = webDriver.findElement(By.id("password"));
 
-		//上記DBに登録されていないユーザー情報を投入
+		//DB登録済みのユーザー情報を投入
 		user.sendKeys("StudentAA01");
 		password.sendKeys("3SSSSystems");
 
