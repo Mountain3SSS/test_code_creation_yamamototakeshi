@@ -3,6 +3,8 @@ package jp.co.sss.lms.ct.f02_faq;
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +15,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * 結合テスト よくある質問機能
@@ -176,7 +180,8 @@ public class Case05 {
 		// ページを1ページ分上げる
 		WebElement pagedown = webDriver.findElement(By.tagName("body"));
 		pagedown.sendKeys(Keys.PAGE_UP);
-		pageLoadTimeout(5);
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='button'][value='クリア']")));
 
 		// クリアボタンを押下する
 		webDriver.findElement(By.cssSelector("input[type='button'][value='クリア']")).click();
@@ -184,8 +189,7 @@ public class Case05 {
 		// テキストボックス内が空白になっていることを確認しエビデンスを取得
 		WebElement textBox = webDriver.findElement(By.id("form"));
 		String value = textBox.getAttribute("value");
-		assert value.isEmpty();
-
+		assertEquals("", value);
 		getEvidence(new Case05() {
 		});
 
