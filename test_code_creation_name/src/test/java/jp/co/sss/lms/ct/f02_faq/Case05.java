@@ -147,9 +147,11 @@ public class Case05 {
 		// キーワードのテキストボックスへ「助成金」と入力する
 		WebElement textBox = webDriver.findElement(By.id("form"));
 		textBox.sendKeys("助成金");
+
 		// 入力項目にてエビデンス取得
 		getEvidence(new Case05() {
 		}, "1_入力した検索キーワード");
+
 		// 検索ボタンを押下する
 		webDriver.findElement(By.cssSelector("input[type='submit'][value='検索']")).click();
 		pageLoadTimeout(5);

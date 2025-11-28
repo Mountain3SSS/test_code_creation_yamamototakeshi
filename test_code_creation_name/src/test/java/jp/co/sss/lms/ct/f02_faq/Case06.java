@@ -160,7 +160,8 @@ public class Case06 {
 	void test06() {
 		// TODO ここに追加
 		webDriver.findElement(By.tagName("body")).sendKeys(Keys.PAGE_DOWN);
-		//対象クリック前状態をスクショ
+
+		//対象展開前の状態のエビデンスを取得
 		getEvidence(new Case06() {
 		}, "検索結果質問クリック前");
 
@@ -168,12 +169,12 @@ public class Case06 {
 		webDriver.findElement(By.className("sorting_1")).click();
 		pageLoadTimeout(5);
 
-		// 
+		//確認対象が正しいことを確認する。その後対象が展開された状態でエビデンスを取得 
 		WebElement answer = webDriver.findElement(By.id("answer-h[${status.index}]"));
 		String answerText = "A. 受講者の退職や解雇等、やむを得ない事情による途中終了に関してなど、事情をお伺いした上で、協議という形を取らせて頂きます。 弊社営業担当までご相談下さい。";
 		assertEquals(answerText, answer.getText());
 
-		//対象クリック後状態をスクショ
+		//
 		getEvidence(new Case06() {
 		});
 	}
