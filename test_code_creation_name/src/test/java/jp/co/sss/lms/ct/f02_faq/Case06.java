@@ -176,7 +176,7 @@ public class Case06 {
 
 		//
 		getEvidence(new Case06() {
-		});
+		}, "検索結果質問クリック後");
 	}
 
 }
