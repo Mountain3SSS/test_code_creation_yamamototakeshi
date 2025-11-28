@@ -123,9 +123,9 @@ public class Case04 {
 		pageLoadTimeout(5);
 
 		//ウィンドウハンドルの配列取得
-		Object windowHandles[] = webDriver.getWindowHandles().toArray();
+		Object[] allWindows = webDriver.getWindowHandles().toArray();
 		//新しいページへ移動
-		webDriver.switchTo().window((String) windowHandles[1]);
+		webDriver.switchTo().window(allWindows[1].toString());
 		pageLoadTimeout(5);
 
 		//現タブのリンクが想定のものかチェック
